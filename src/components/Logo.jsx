@@ -3,7 +3,7 @@ import React from "react";
 const classes = {
   logo: {
     height: "8vh",
-    marginLeft: "10px",
+    marginLeft: "30px",
   },
 };
 

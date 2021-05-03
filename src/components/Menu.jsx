@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { MyContext } from "../stores/Context";
 import { menus } from "../data/content";
 
@@ -7,15 +7,21 @@ const classes = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    fontFamily: "Source Sans Pro",
     marginRight: "10px",
   },
   menuItem: {
     padding: "20px",
+    fontSize: "1.5em",
+    fontWeight: "bold",
+    color: "black",
   },
   selected: {
     padding: "20px",
-    color: "black",
+    color: "white",
+    fontSize: "1.5em",
+    fontWeight: "bold",
+    textDecoration: "underline #E8C500",
+    textDecorationThickness: "10px",
   },
 };
 
@@ -43,6 +49,16 @@ const MenuItem = ({ name }) => {
 };
 
 export const Menu = () => {
+  const {
+    state: { refs, currentPage },
+  } = useContext(MyContext);
+
+  useEffect(() => {
+    if (refs[currentPage]) {
+      scrollToRef(refs[currentPage]);
+    }
+  }, [currentPage, refs]);
+
   return (
     <div style={classes.container}>
       {menus.map((item) => {

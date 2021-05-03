@@ -4,10 +4,9 @@ import { Menu } from "./Menu";
 
 const classes = {
   container: {
-    height: "10vh",
+    height: "15vh",
     width: "100%",
-    backgroundColor: "white",
-    position: "sticky",
+    position: "fixed",
     top: "0",
     zIndex: 1,
     display: "flex",
