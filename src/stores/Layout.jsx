@@ -1,11 +1,10 @@
 import React from "react";
-import { Links } from "../components/Links";
 import "../App.css";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MainContext } from "../stores/Context";
-import { Header } from "../components/HeaderMenu";
+import { Header } from "../components/elements/HeaderMenu";
 
 const classes = {
   body: {
