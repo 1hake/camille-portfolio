@@ -11,6 +11,12 @@ export const MyRouter = () => {
           <Route path="/">
             <ScrollableLayout />
           </Route>
+          <Route
+            path="/:id"
+            render={(props) => (
+              <ScrollableLayout id={props.match.params.id}></ScrollableLayout>
+            )}
+          />
         </Switch>
       </Layout>
     </Router>

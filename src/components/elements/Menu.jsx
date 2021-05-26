@@ -40,6 +40,7 @@ const MenuItem = ({ name, isActive }) => {
       <div
         onClick={() => {
           dispatch({ type: "SET_CURRENT_PAGE", data: name });
+          dispatch({ type: "SET_PANEL", data: false });
           scrollToRef(refs[name]);
         }}
         style={currentPage === name ? classes.selected : classes.menuItem}

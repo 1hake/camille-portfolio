@@ -67,7 +67,7 @@ export const HomePage = ({ name, color, children, index }) => {
     <div ref={myRef} style={{ ...classes.panel, backgroundColor: color }}>
       <div style={classes.imagesContainer}>
         {data.map((image) => {
-          return <ImageContainer image={image}></ImageContainer>;
+          return <ImageContainer image={image.src}></ImageContainer>;
         })}
       </div>
     </div>

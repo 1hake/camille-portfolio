@@ -19,6 +19,8 @@ const initialState = {
   loading: false,
   error: null,
   currentPage: menus[0].name,
+  panelOpen: false,
+  content: menus,
 };
 
 const reducer = (state, action) => {
@@ -36,8 +38,13 @@ const reducer = (state, action) => {
         ...state,
         currentPage: action.data,
       };
+    case "SET_PANEL":
+      return {
+        ...state,
+        panelOpen: action.data,
+      };
     default:
-      throw new Error();
+      throw new Error("action is not defined");
   }
 };
 
@@ -62,7 +69,6 @@ export const MainContext = (props) => {
         setEditMode,
         values,
         setValues,
-
         state,
         dispatch,
       }}
