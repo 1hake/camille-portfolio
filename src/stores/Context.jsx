@@ -41,7 +41,8 @@ const reducer = (state, action) => {
     case "SET_PANEL":
       return {
         ...state,
-        panelOpen: action.data,
+        panelOpen: !state.panelOpen,
+        currentPanel: action.data,
       };
     default:
       throw new Error("action is not defined");

@@ -11,12 +11,12 @@ export const ImageContainer = ({ image }) => {
   return (
     <div
       alt={image}
-      onClick={() => dispatch({ type: "SET_PANEL", data: true })}
+      onClick={() => dispatch({ type: "SET_PANEL", data: image })}
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       style={{
         ...(!open ? classes.image : classes.selectedImage),
-        backgroundImage: `url(${image})`,
+        backgroundImage: `url(${image.src})`,
       }}
       src={image}
     ></div>
