@@ -19,12 +19,16 @@ export const SinglePage = () => {
           ></div>
           <div style={classes.textContainer}>
             <p style={classes.text}>{currentPanel.text}</p>
-            <p
+            <div
               onClick={() => dispatch({ type: "SET_PANEL", data: null })}
               style={classes.back}
             >
-              RETOUR
-            </p>
+              <img
+                style={classes.arrow}
+                src={require("../../assets/img/left-arrow.png")}
+                alt=""
+              />
+            </div>
           </div>
         </>
       )}
@@ -45,8 +49,8 @@ const classes = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    opacity: 0.9,
-    backdropFilter: "blur(10px)",
+    opacity: 0.95,
+    // backdropFilter: "blur(10px)",
   },
   panelClose: {
     position: "fixed" /* Stay in place */,
@@ -85,5 +89,8 @@ const classes = {
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
+  },
+  arrow: {
+    height: "30px",
   },
 };
