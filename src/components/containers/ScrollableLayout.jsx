@@ -8,11 +8,11 @@ import { Header } from "../elements/HeaderMenu";
 import { SinglePage } from "./SinglePage";
 
 export const ScrollableLayout = ({ id }) => {
+  const { panelOpen } = useContext(MyContext);
   return (
     <>
       <div style={{ backgroundColor: "white", top: "0", left: "0" }}>
         <Header></Header>
-        <HomePage></HomePage>
         <SinglePage></SinglePage>
         {menus.map((element, index) => {
           return (

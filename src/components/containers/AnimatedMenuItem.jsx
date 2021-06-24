@@ -7,6 +7,11 @@ const classes = {
     position: "relative",
     height: "10px",
   },
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 };
 
 export const AnimatedMenuItem = ({ children, name }) => {
@@ -20,11 +25,11 @@ export const AnimatedMenuItem = ({ children, name }) => {
       width: currentPage === name ? "100%" : "0%",
       backgroundColor: currentPage === name ? "#E8C500" : "#E8C500",
       position: "relative",
-      height: "20px",
+      height: "15px",
       marginTop: "-37px",
       zIndex: "-1",
     },
-    config: { duration: 400 },
+    config: { duration: 300 },
   });
 
   return (

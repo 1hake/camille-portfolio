@@ -19,12 +19,15 @@ const classes = {
     fontWeight: "bold",
     color: "black",
     zIndex: "1",
+    fontFamily: "Source Sans Pro",
   },
   selected: {
     padding: "20px",
     color: "black",
     fontSize: "1.5em",
     fontWeight: "bold",
+    fontFamily: "Source Sans Pro",
+
     // textDecoration: "underline #E8C500",
     // textDecorationThickness: "10px",
   },

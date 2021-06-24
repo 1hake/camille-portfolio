@@ -24,6 +24,7 @@ const classes = {
     justifyContent: "center",
     alignItems: "center",
     flexWrap: "wrap",
+    marginTop: "40px",
   },
 };
 

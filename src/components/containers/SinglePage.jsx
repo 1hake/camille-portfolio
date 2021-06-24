@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { MyContext } from "../../stores/Context";
+import { useSpring, animated } from "react-spring";
 
 export const SinglePage = () => {
   const {
@@ -7,8 +8,25 @@ export const SinglePage = () => {
     state: { panelOpen, currentPanel },
   } = useContext(MyContext);
 
+  const animatedStyles = useSpring({
+    to: {
+      opacity: panelOpen ? "1" : "0",
+      position: "fixed" /* Stay in place */,
+      zIndex: 1 /* Sit on top */,
+      left: 0,
+      top: 0,
+      width: "100%" /* Full width */,
+      height: panelOpen ? "100%" : "0%",
+      backgroundColor: "white",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    config: { duration: 300 },
+  });
+
   return (
-    <div style={panelOpen ? classes.panel : classes.panelClose}>
+    <animated.div style={animatedStyles}>
       {currentPanel && (
         <>
           <div
@@ -32,7 +50,7 @@ export const SinglePage = () => {
           </div>
         </>
       )}
-    </div>
+    </animated.div>
   );
 };
 

@@ -34,20 +34,21 @@ export const ImageContainer = ({ image }) => {
 const classes = {
   image: {
     height: "60vh",
-    width: "22vw",
+    width: "27vw",
     transition: "all 0.3s ease-in-out",
     backgroundSize: "cover",
   },
   selectedImage: {
     height: "60vh",
     transform: "scale(1.2,1.2)",
-    width: "22vw",
+    width: "27vw",
     transition: "all 0.3s ease-in-out",
     backgroundSize: "cover",
   },
   wrapper: {
     overflow: "hidden",
     transition: "all 0.3s ease-in-out",
+    margin: "1px",
   },
   text: {
     fontSize: "4em",
@@ -60,7 +61,7 @@ const classes = {
   panelOpen: {
     transition: "all 0.8s ease-in-out",
     height: "60vh",
-    width: "22vw",
+    width: "27vw",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -71,7 +72,7 @@ const classes = {
   panelClose: {
     transition: "all 0.8s ease-in-out",
     height: "60vh",
-    width: "22vw",
+    width: "27vw",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

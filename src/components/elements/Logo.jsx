@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { MyContext } from "../../stores/Context";
 import { scrollToRef } from "../utils/tools";
+import LogoSVG from "../utils/logoSVG";
 
 const classes = {
   logo: {
-    height: "8vh",
     marginLeft: "30px",
+    marginTop: "30px",
   },
 };
 
@@ -15,14 +16,13 @@ export const Logo = () => {
     state: { refs },
   } = useContext(MyContext);
   return (
-    <img
+    <LogoSVG
       onClick={() => {
-        dispatch({ type: "SET_CURRENT_PAGE", data: "home" });
-        scrollToRef(refs["home"]);
+        dispatch({ type: "SET_CURRENT_PAGE", data: "Offices" });
+        scrollToRef(refs["Offices"]);
       }}
       style={classes.logo}
-      src={require("../../assets/img/logo.png")}
       alt=""
-    />
+    ></LogoSVG>
   );
 };
