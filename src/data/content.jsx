@@ -94,4 +94,9 @@ export const menus = [
       },
     ],
   },
+  {
+    name: 'Contact', 
+    color: 'white', 
+    images: []
+  },
 ];

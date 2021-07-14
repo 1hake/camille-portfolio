@@ -6,6 +6,7 @@ import { HomePage } from "./HomePage";
 import { menus } from "../../data/content";
 import { Header } from "../elements/HeaderMenu";
 import { SinglePage } from "./SinglePage";
+import { Contact } from "./ContactPage";
 
 export const ScrollableLayout = ({ id }) => {
   const { panelOpen } = useContext(MyContext);
@@ -19,6 +20,7 @@ export const ScrollableLayout = ({ id }) => {
             <Panel color={element.color} name={element.name} index={index} />
           );
         })}
+        <Contact></Contact>
       </div>
     </>
   );

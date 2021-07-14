@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { MyContext } from "../../stores/Context";
 import { useSpring, animated } from "react-spring";
+import { ProjectInfo } from "./ProjectInfo";
+
 
 export const SinglePage = () => {
   const {
@@ -29,6 +31,7 @@ export const SinglePage = () => {
     <animated.div style={animatedStyles}>
       {currentPanel && (
         <>
+          <ProjectInfo></ProjectInfo>
           <div
             style={{
               ...classes.image,
@@ -83,10 +86,10 @@ const classes = {
     alignItems: "center",
   },
   image: {
-    margin: "40px",
     height: "60vh",
     width: "20vw",
     transition: "0.5s ease-in-out",
+    marginRight: '10vw'
 
     // boxShadow: "0px 0px 22px 5px rgba(0,0,0,0.3)",
   },
@@ -111,4 +114,4 @@ const classes = {
   arrow: {
     height: "30px",
   },
-};
+}

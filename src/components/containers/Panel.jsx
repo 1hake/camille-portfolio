@@ -2,9 +2,6 @@ import React, {
   useRef,
   useEffect,
   useContext,
-  useMemo,
-  useState,
-  useCallback,
 } from "react";
 import { MyContext } from "../../stores/Context";
 import { menus } from "../../data/content";

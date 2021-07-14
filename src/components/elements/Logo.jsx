@@ -13,9 +13,10 @@ const classes = {
 export const Logo = () => {
   const {
     dispatch,
-    state: { refs },
+    state: { refs, currentPage },
   } = useContext(MyContext);
-  return (
+  return currentPage !== 'Contact' ? (
+
     <LogoSVG
       onClick={() => {
         dispatch({ type: "SET_CURRENT_PAGE", data: "Offices" });
@@ -24,5 +25,5 @@ export const Logo = () => {
       style={classes.logo}
       alt=""
     ></LogoSVG>
-  );
+  ) : <div style={classes.logo}></div>;
 };

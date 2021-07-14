@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useContext, useState } from "react";
 import { MyContext } from "../../stores/Context";
 import { menus } from "../../data/content";
+import LogoSVG from "../utils/logoSVG";
 
 const classes = {
   panel: {
@@ -10,27 +11,20 @@ const classes = {
     justifyContent: "center",
     alignItems: "center",
     flexWrap: "wrap",
+    flexDirection: 'column'
   },
-  image: {
-    margin: "20px",
-    height: "20vh",
-    width: "20vh",
-    transition: "0.5s ease-in-out",
-    // boxShadow: "0px 0px 22px 5px rgba(0,0,0,0.3)",
-  },
-  selectedImage: {
-    margin: "20px",
-    height: "20vh",
-    width: "20vh",
-    transition: "0.5s ease-in-out",
-    // boxShadow: "0px 0px 22px 5px rgba(0,0,0,0.3)",
-  },
-  imagesContainer: {
+  textContainer: {
     display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexWrap: "wrap",
+    fontFamily: "Source Sans Pro",
+    color: 'black',
+    fontWeight: "bold",
+    fontSize: '1.5rem'
+
   },
+  logo: {
+    margin: '30px'
+
+  }
 };
 
 export const Contact = ({ name, color, children, index }) => {
@@ -38,12 +32,20 @@ export const Contact = ({ name, color, children, index }) => {
   const myRef = useRef(null);
 
   useEffect(() => {
-    dispatch({ type: "STORE_REF", ref: myRef, name: "contact" });
+    dispatch({ type: "STORE_REF", ref: myRef, name: "Contact" });
   }, [dispatch, name]);
 
   return (
     <div ref={myRef} style={{ ...classes.panel, backgroundColor: color }}>
-      hello
+      <LogoSVG style={classes.logo}></LogoSVG>
+      <div style={classes.textContainer}>
+        Camille Guillotin . Architecte d'intérieur . Designer Global
+      </div>
+      <div>
+        <img src={require('../../assets/img/CV.png')} style={{ width: '30px', margin: '10px' }} alt="" />
+        <img src={require('../../assets/img/Mail.png')} style={{ width: '30px', margin: '10px' }} alt="" />
+        <img src={require('../../assets/img/Linkedin.png')} style={{ width: '30px', margin: '10px' }} alt="" />
+      </div>
     </div>
   );
 };
