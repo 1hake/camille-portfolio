@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
 import { MyContext } from "../../stores/Context";
 
-export const ImageContainer = ({ image }) => {
+
+
+export const ImageContainer = ({ image, length }) => {
   const {
     dispatch,
     state: { panelOpen },
   } = useContext(MyContext);
-
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -19,11 +20,16 @@ export const ImageContainer = ({ image }) => {
           style={{
             ...(!open ? classes.image : classes.selectedImage),
             backgroundImage: `url(${image.src})`,
+            width: `${80 / length}vw`,
+            height: "60vh",
           }}
           src={image}
         >
           <div style={open ? classes.panelOpen : classes.panelClose}>
-            <h1 style={open ? classes.text : classes.noText}>{image.name}</h1>
+            <h1 style={{
+              ...open ? classes.text : classes.noText,
+              fontSize: length > 3 ? "2em" : "4em"
+            }}>{image.name}</h1>
           </div>
         </div>
       </div>
@@ -33,15 +39,12 @@ export const ImageContainer = ({ image }) => {
 
 const classes = {
   image: {
-    height: "60vh",
-    width: "27vw",
     transition: "all 0.3s ease-in-out",
     backgroundSize: "cover",
   },
   selectedImage: {
     height: "60vh",
     transform: "scale(1.2,1.2)",
-    width: "27vw",
     transition: "all 0.3s ease-in-out",
     backgroundSize: "cover",
   },
@@ -51,7 +54,6 @@ const classes = {
     margin: "1px",
   },
   text: {
-    fontSize: "4em",
     position: "relative",
     fontWeight: "bold",
     overflowWrap: "break-word",
@@ -82,7 +84,6 @@ const classes = {
   },
 
   noText: {
-    fontSize: "4em",
     position: "relative",
     fontWeight: "bold",
     overflowWrap: "break-word",

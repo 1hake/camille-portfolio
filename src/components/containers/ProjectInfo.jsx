@@ -13,19 +13,19 @@ export const ProjectInfo = () => {
         <div style={classes.projectInfo}>
             <div style={classes.item}>
                 <img src={require('../../assets/img/Here.png')} alt="" style={classes.image} />
-                <h1 style={classes.text}>Paris</h1>
+                <span style={classes.text}>Paris</span>
             </div>
             <div style={classes.item}>
                 <img src={require('../../assets/img/Surfaces.png')} alt="" style={classes.image} />
-                <h1 style={classes.text}>8000 m2</h1>
+                <span style={classes.text}>8000 m2</span>
             </div>
             <div style={classes.item}>
                 <img src={require('../../assets/img/Euro.png')} alt="" style={classes.image} />
-                <h1 style={classes.text}>500.000</h1>
+                <span style={classes.text}>500.000</span>
             </div>
             <div style={classes.item}>
                 <img src={require('../../assets/img/Clock.png')} alt="" style={classes.image} />
-                <h1 style={classes.text}>2020</h1>
+                <span style={classes.text}>2020</span>
             </div>
 
 
@@ -34,24 +34,27 @@ export const ProjectInfo = () => {
 
 const classes = {
     projectInfo: {
-        width: '17vw',
-        height: "30vh",
+        padding: '30px',
+
         backgroundColor: 'white',
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "space-between",
         left: 0,
         position: 'absolute',
-        marginLeft: '30px',
-        flexDirection: 'column'
+        marginLeft: '100px',
+        flexDirection: 'column',
+        boxShadow: '0px 12px 24px -12px rgba(0, 0, 0, 0.5)',
     },
     image: {
         height: '20px',
     },
     item: {
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '100px',
+        padding: '3px',
     },
     text: {
         display: "flex",

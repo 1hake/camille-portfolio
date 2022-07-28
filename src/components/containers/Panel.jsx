@@ -34,7 +34,6 @@ export const Panel = ({ name, color, children, index }) => {
   });
 
   useEffect(() => {
-    console.log("stored ref");
     dispatch({ type: "STORE_REF", ref: myRef, name: name });
   }, [dispatch, name]);
 
@@ -42,7 +41,7 @@ export const Panel = ({ name, color, children, index }) => {
     <div ref={myRef} style={{ ...classes.panel, backgroundColor: color }}>
       <div style={classes.imagesContainer}>
         {data[0].images.map((image) => {
-          return <ImageContainer image={image}></ImageContainer>;
+          return <ImageContainer length={data[0].images.length} image={image}></ImageContainer>;
         })}
       </div>
     </div>

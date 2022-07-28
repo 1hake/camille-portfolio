@@ -1,8 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { MyContext } from "../../stores/Context";
 import { useSpring, animated } from "react-spring";
 import { ProjectInfo } from "./ProjectInfo";
+import PhotoAlbum from "react-photo-album";
+import photos, { unsplashPhotos } from "../../data/photos";
+import 'react-image-lightbox/style.css';
 
+import Lightbox from "react-image-lightbox";
+
+
+const slides = photos.map(({ src, width, height, images }) => src);
 
 export const SinglePage = () => {
   const {
@@ -10,6 +17,7 @@ export const SinglePage = () => {
     state: { panelOpen, currentPanel },
   } = useContext(MyContext);
 
+  const [index, setIndex] = useState(-1);
   const animatedStyles = useSpring({
     to: {
       opacity: panelOpen ? "1" : "0",
@@ -32,12 +40,39 @@ export const SinglePage = () => {
       {currentPanel && (
         <>
           <ProjectInfo></ProjectInfo>
-          <div
-            style={{
-              ...classes.image,
-              backgroundImage: `url(${currentPanel.src})`,
-            }}
-          ></div>
+          <PhotoAlbum
+            photos={photos}
+            layout="columns"
+            columns={3}
+
+            onClick={(event, photo, index) => setIndex(index)}
+          />
+          {index > 0 && (
+            <Lightbox
+              mainSrc={slides[index]}
+              nextSrc={slides[(index + 1) % slides.length]}
+              prevSrc={slides[(index + slides.length - 1) % slides.length]}
+              onCloseRequest={() => setIndex(-1)}
+              onMovePrevRequest={() =>
+                setIndex((index + slides.length - 1) % slides.length)
+              }
+              onMoveNextRequest={() =>
+                setIndex((index + 1) % slides.length)
+              }
+              enableZoom={false}
+            />
+          )}
+          {/* {currentPanel.detailImage.map((src) => {
+            console.log("🚀 ~ file: SinglePage.jsx ~ line 36 ~ {currentPanel.detailImage.map ~ src", src)
+            return (
+              <div
+                style={{
+                  ...classes.image,
+                  backgroundImage: `url(${src})`,
+                }}
+              ></div>
+            )
+          })} */}
           <div style={classes.textContainer}>
             <p style={classes.text}>{currentPanel.text}</p>
             <div
