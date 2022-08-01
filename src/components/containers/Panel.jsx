@@ -7,6 +7,8 @@ import { MyContext } from "../../stores/Context";
 import { menus } from "../../data/content";
 import { ImageContainer } from "./ImageContainer";
 
+
+
 const classes = {
   panel: {
     height: "100vh",
@@ -23,10 +25,18 @@ const classes = {
     flexWrap: "wrap",
     marginTop: "40px",
   },
+  mobileContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    flexWrap: "wrap",
+    marginTop: "15vh",
+  },
 };
 
 export const Panel = ({ name, color, children, index }) => {
-  const { dispatch } = useContext(MyContext);
+  const { dispatch, isMobile } = useContext(MyContext);
   const myRef = useRef(null);
 
   const data = menus.filter((element) => {
@@ -39,7 +49,7 @@ export const Panel = ({ name, color, children, index }) => {
 
   return (
     <div ref={myRef} style={{ ...classes.panel, backgroundColor: color }}>
-      <div style={classes.imagesContainer}>
+      <div style={isMobile ? classes.mobileContainer : classes.imagesContainer}>
         {data[0].images.map((image) => {
           return <ImageContainer length={data[0].images.length} image={image}></ImageContainer>;
         })}

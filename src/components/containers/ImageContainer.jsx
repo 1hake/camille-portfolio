@@ -7,6 +7,7 @@ export const ImageContainer = ({ image, length }) => {
   const {
     dispatch,
     state: { panelOpen },
+    isMobile,
   } = useContext(MyContext);
   const [open, setOpen] = useState(false);
   return (
@@ -20,8 +21,8 @@ export const ImageContainer = ({ image, length }) => {
           style={{
             ...(!open ? classes.image : classes.selectedImage),
             backgroundImage: `url(${image.src})`,
-            width: `${80 / length}vw`,
-            height: "60vh",
+            width: isMobile ? "80vw" : `${80 / length}vw`,
+            height: isMobile ? "25vh" : "60vh",
           }}
           src={image}
         >

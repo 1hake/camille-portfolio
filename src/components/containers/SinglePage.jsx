@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../stores/Context";
 import { useSpring, animated } from "react-spring";
 import { ProjectInfo } from "./ProjectInfo";
@@ -15,39 +15,58 @@ export const SinglePage = () => {
   const {
     dispatch,
     state: { panelOpen, currentPanel },
+    isMobile,
   } = useContext(MyContext);
 
   const [index, setIndex] = useState(-1);
+  const [resolved, setResolved] = useState(false);
   const animatedStyles = useSpring({
     to: {
       opacity: panelOpen ? "1" : "0",
       position: "fixed" /* Stay in place */,
       zIndex: 1 /* Sit on top */,
       left: 0,
-      top: 0,
+      bottom: 0,
       width: "100%" /* Full width */,
       height: panelOpen ? "100%" : "0%",
       backgroundColor: "white",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
+
+    },
+    onStart: () => setResolved(false),
+    onResolve: () => {
+      setResolved(true)
     },
     config: { duration: 300 },
   });
 
+
+
   return (
     <animated.div style={animatedStyles}>
-      {currentPanel && (
-        <>
-          <ProjectInfo></ProjectInfo>
-          <PhotoAlbum
-            photos={photos}
-            layout="columns"
-            columns={3}
 
-            onClick={(event, photo, index) => setIndex(index)}
-          />
-          {index > 0 && (
+
+      {currentPanel && (
+        <div style={isMobile ? classes.mobileContainer : classes.container}>
+
+
+          <div style={isMobile ? classes.mobilePhotoContainer : classes.photoContainer}>
+            {resolved && <PhotoAlbum
+              photos={resolved && photos}
+              layout={"rows"}
+              width={'100%'}
+              columns={2}
+              targetRowHeight={isMobile ? 100 : 250}
+
+              onClick={(event, photo, index) => {
+
+                setIndex(index)
+              }}
+            />}
+
+            <p style={classes.infoText}>Cliquez sur une image pour l'afficher en plein écran</p>
+          </div>
+
+          {index >= 0 && (
             <Lightbox
               mainSrc={slides[index]}
               nextSrc={slides[(index + 1) % slides.length]}
@@ -62,21 +81,16 @@ export const SinglePage = () => {
               enableZoom={false}
             />
           )}
-          {/* {currentPanel.detailImage.map((src) => {
-            console.log("🚀 ~ file: SinglePage.jsx ~ line 36 ~ {currentPanel.detailImage.map ~ src", src)
-            return (
-              <div
-                style={{
-                  ...classes.image,
-                  backgroundImage: `url(${src})`,
-                }}
-              ></div>
-            )
-          })} */}
-          <div style={classes.textContainer}>
-            <p style={classes.text}>{currentPanel.text}</p>
+
+          <div style={classes.infoContainer}>
+            <div style={classes.textContainer}>
+              <h1 style={classes.title}>{currentPanel.name}</h1>
+              <ProjectInfo></ProjectInfo>
+
+              <p style={classes.text}>{currentPanel.text}</p>
+            </div>
             <div
-              onClick={() => dispatch({ type: "SET_PANEL", data: null })}
+              onClick={() => dispatch({ type: "CLOSE_PANEL", data: null })}
               style={classes.back}
             >
               <img
@@ -86,13 +100,31 @@ export const SinglePage = () => {
               />
             </div>
           </div>
-        </>
+        </div>
       )}
     </animated.div>
   );
 };
 
 const classes = {
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    left: 0,
+    marginTop: "5vh",
+    width: "100%",
+    height: "100%"
+  },
+  mobileContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    width: "100%",
+    height: "100%",
+    marginTop: "10vh",
+  },
   panel: {
     position: "fixed" /* Stay in place */,
     zIndex: 1 /* Sit on top */,
@@ -131,7 +163,19 @@ const classes = {
   text: {
     fontSize: "1rem",
     maxWidth: "500px",
-    margin: "20px",
+    color: "black",
+  },
+  infoText: {
+    marginTop: "20px",
+    fontSize: "0.8rem",
+    maxWidth: "500px",
+    color: "black",
+    fontWeight: "bold",
+    fontStyle: "italic",
+  },
+  title: {
+    fontSize: "2rem",
+    maxWidth: "500px",
     color: "black",
   },
   back: {
@@ -142,9 +186,34 @@ const classes = {
   },
   textContainer: {
     display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    flexDirection: "column",
+    padding: "30px",
+  },
+  infoContainer: {
+    display: "flex",
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
+
+  },
+  photoContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    // maxWidth: "30vw",
+    minWidth: "40vw",
+    margin: "20px",
+
+  },
+  mobilePhotoContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+
   },
   arrow: {
     height: "30px",

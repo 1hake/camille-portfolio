@@ -3,8 +3,7 @@ import { MyContext } from "../../stores/Context";
 import { menus } from "../../data/content";
 import { AnimatedMenuItem } from "../containers/AnimatedMenuItem";
 import { scrollToRef } from "../utils/tools";
-
-import { IParallax } from "@react-spring/parallax";
+import { push as HamburgerMenu } from "react-burger-menu";
 
 const classes = {
   container: {
@@ -42,6 +41,7 @@ const MenuItem = ({ name, isActive }) => {
     <AnimatedMenuItem name={name}>
       <div
         onClick={() => {
+          dispatch({ type: "CLOSE_PANEL", data: null });
           dispatch({ type: "SET_CURRENT_PAGE", data: name });
           scrollToRef(refs[name]);
         }}
@@ -57,12 +57,31 @@ export const Menu = () => {
   const {
     state: { refs, currentPage },
   } = useContext(MyContext);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <div style={classes.container}>
-      {menus.map((item, index) => {
+      <HamburgerMenu
+        isOpen={isOpen}
+
+        right
+        styles={{
+          backgroundColor: "blue",
+          fontFamily: "Source Sans Pro",
+          fontSize: "1.5em",
+          fontWeight: "bold",
+          color: "black",
+          width: "50vw",
+        }}
+      >
+        {menus.map((item, index) => {
+          return <MenuItem name={item.name} index={index} />;
+        })}
+      </HamburgerMenu>
+
+      {/* {menus.map((item, index) => {
         return <MenuItem name={item.name} index={index} />;
-      })}
+      })} */}
     </div>
   );
 };

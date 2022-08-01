@@ -11,6 +11,8 @@ import { toast } from "react-toastify";
 import { initialStateValues } from "../components/utils/constants";
 import { menus } from "../data/content";
 import { getElements } from "./firebaseAction";
+import { useMediaQuery } from "react-responsive";
+
 
 export const MyContext = React.createContext();
 
@@ -21,6 +23,7 @@ const initialState = {
   currentPage: menus[0].name,
   panelOpen: false,
   content: menus,
+  currentPanel: null,
 };
 
 const reducer = (state, action) => {
@@ -41,8 +44,14 @@ const reducer = (state, action) => {
     case "SET_PANEL":
       return {
         ...state,
-        panelOpen: !state.panelOpen,
+        panelOpen: true,
         currentPanel: action.data,
+      };
+    case "CLOSE_PANEL":
+      return {
+        ...state,
+        panelOpen: false,
+        currentPanel: null,
       };
     default:
       throw new Error("action is not defined");
@@ -55,6 +64,9 @@ export const MainContext = (props) => {
   const [editMode, setEditMode] = useState(false);
   const [values, setValues] = useState(initialStateValues);
   const [state, dispatch] = useReducer(reducer, initialState);
+  const isMobile = useMediaQuery({ query: '(max-width: 700px)' })
+
+
 
   useEffect(() => {
     // getElements();
@@ -72,6 +84,7 @@ export const MainContext = (props) => {
         setValues,
         state,
         dispatch,
+        isMobile
       }}
     >
       {props.children}

@@ -7,6 +7,7 @@ const classes = {
   logo: {
     marginLeft: "30px",
     marginTop: "30px",
+    minWidth: "50px",
   },
 };
 

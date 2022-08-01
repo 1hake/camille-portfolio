@@ -34,34 +34,28 @@ export const ProjectInfo = () => {
 
 const classes = {
     projectInfo: {
-        padding: '30px',
-
-        backgroundColor: 'white',
+        padding: '30px 30px 30px 0px',
         display: "flex",
         justifyContent: "center",
-        alignItems: "space-between",
-        left: 0,
-        position: 'absolute',
-        marginLeft: '100px',
-        flexDirection: 'column',
-        boxShadow: '0px 12px 24px -12px rgba(0, 0, 0, 0.5)',
+        alignItems: "flex-start",
+
     },
     image: {
         height: '20px',
     },
     item: {
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start',
         alignItems: 'center',
-        width: '100px',
         padding: '3px',
+        marginRight: '10px',
     },
     text: {
         display: "flex",
         fontFamily: "Source Sans Pro",
         color: 'black',
         fontWeight: "bold",
-        fontSize: '1rem'
-
+        fontSize: '1rem',
+        marginLeft: '10px',
     },
 }
