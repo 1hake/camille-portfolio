@@ -20,7 +20,7 @@ export const menus = [
       },
       {
         id: "2",
-        src: "https://m-moser.imgix.net/uploads/2020_05/Crown_Estate_7-1895_AK_LDN_2020_17_Qghrm4p.JPG?auto=format&fit=crop&crop=faces&w=768&h=512",
+        src: "https://cloudfront.v2com-newswire.com/data/photo/image/55229/preview_2875-10_55229_sc_v2com.jpg",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         name: "Nom du projet",
         detailImage: []

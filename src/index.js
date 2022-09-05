@@ -4,6 +4,7 @@ import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import "bootswatch/dist/superhero/bootstrap.min.css";
 import { MyRouter } from "./stores/Router";
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>

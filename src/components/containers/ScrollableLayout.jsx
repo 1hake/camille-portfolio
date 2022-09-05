@@ -13,6 +13,7 @@ export const ScrollableLayout = ({ id }) => {
     <>
       <div style={{ backgroundColor: "white", top: "0", left: "0" }}>
         <Header></Header>
+
         <SinglePage></SinglePage>
         {menus.map((element, index) => {
           return (

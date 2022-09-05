@@ -50,8 +50,8 @@ export const SinglePage = () => {
 
 
           <div style={isMobile ? classes.mobilePhotoContainer : classes.photoContainer}>
-            {resolved && <PhotoAlbum
-              photos={resolved && photos}
+            <PhotoAlbum
+              photos={photos}
               layout={"rows"}
               width={'100%'}
               columns={2}
@@ -61,9 +61,9 @@ export const SinglePage = () => {
 
                 setIndex(index)
               }}
-            />}
+            />
 
-            <p style={classes.infoText}>Cliquez sur une image pour l'afficher en plein écran</p>
+            <p className={'text-xl text-zinc-100'}>Cliquez sur une image pour l'afficher en plein écran</p>
           </div>
 
           {index >= 0 && (
@@ -204,7 +204,7 @@ const classes = {
     alignItems: "center",
     flexDirection: "column",
     // maxWidth: "30vw",
-    minWidth: "40vw",
+    width: "50vw",
     margin: "20px",
 
   },

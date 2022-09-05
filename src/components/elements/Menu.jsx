@@ -3,7 +3,7 @@ import { MyContext } from "../../stores/Context";
 import { menus } from "../../data/content";
 import { AnimatedMenuItem } from "../containers/AnimatedMenuItem";
 import { scrollToRef } from "../utils/tools";
-import { push as HamburgerMenu } from "react-burger-menu";
+import { slide as HamburgerMenu } from "react-burger-menu";
 
 const classes = {
   container: {
@@ -79,7 +79,8 @@ export const Menu = () => {
         })}
       </HamburgerMenu>
 
-      {/* {menus.map((item, index) => {
+      {/* 
+      {menus.map((item, index) => {
         return <MenuItem name={item.name} index={index} />;
       })} */}
     </div>
